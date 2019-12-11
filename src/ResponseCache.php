@@ -2,6 +2,7 @@
 
 namespace Spatie\ResponseCache;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Spatie\ResponseCache\Hasher\RequestHasher;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,7 +86,7 @@ class ResponseCache
 
         $clonedResponse->headers->set(
             config('responsecache.cache_time_header_name'),
-            now()->toRfc2822String(),
+            Carbon::now()->toRfc2822String(),
         );
 
         return $clonedResponse;
